@@ -11,7 +11,9 @@ $(document).ready(function() {
                 'q': userInput,
                 'k': '274917-Stuffyou-HUM4RB26',
                 'limit': 5,
-                'type': "music"
+                'type': "music",
+                'info': 1
+
             },
             success: function(data) {
                 var loop = data.Similar.Results;
@@ -25,10 +27,30 @@ $(document).ready(function() {
 
         })
 
+        //function calling event data --- errr not so good yet 
+        var cityInput = $('.city').val();
+        $.ajax({
+            type: 'GET',
+            url: 'rest.bandsintown.com/artists/' + { userInput } + '/events',
+            jsonp: 'callback',
+            dataType: 'jsonp',
+            data: {
+                app_id: 'Capstone',
+                name: '' + loop[i].Name + '',
+                city: cityInput,
+                date: 2017 - 10 - 31
+            },
+            success: function(eventData) {
+                console.log(eventData);
+            }
+        });
+
     }
     $('form').submit(function(event) {
-        event.preventDefault();
-        var userInput = $('input').val();
-        getTdResults();
+        $('.city').submit(function(event) {
+            event.preventDefault();
+            getTdResults();
+            getEventResults();
+        });
     });
 });
