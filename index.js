@@ -1,56 +1,47 @@
 $(document).ready(function() {
-    function getTdResults() {
-        console.log('function run');
-        var userInput = $('.input').val();
-        $.ajax({
-            type: 'GET',
-            url: 'https://tastedive.com/api/similar',
-            jsonp: 'callback',
-            dataType: 'jsonp',
-            data: {
-                'q': userInput,
-                'k': '274917-Stuffyou-HUM4RB26',
-                'limit': 5,
-                'type': "music",
-                'info': 1
+    $('form').submit(onSubmit);
 
-            },
-            success: function(data) {
-                var loop = data.Similar.Results;
-                console.log(data.Similar.Results);
-                for (var i = 0; i < loop.length; i++) {
-                    console.log(loop[i].Name);
+});
 
-                    $('.container').append(' <h4>' + loop[i].Name + ' </h4> ');
-                }
-            }
+function getTdResults() {
+    console.log('function run');
+    var userInput = $('.input').val();
+    $('.col-sm-3').append('<h4> Search for artists similar to:   ' + userInput + '</h4>');
 
-        })
+    $.ajax({
+        type: 'GET',
+        url: 'https://tastedive.com/api/similar',
+        jsonp: 'callback',
+        dataType: 'jsonp',
+        data: {
+            'q': userInput,
+            'k': '274917-Stuffyou-HUM4RB26',
+            'limit': 6,
+            'type': "music",
+            'info': 1
+        },
+        success: showTasteDiveData
+    })
 
-        //function calling event data --- errr not so good yet 
-        var cityInput = $('.city').val();
-        $.ajax({
-            type: 'GET',
-            url: 'rest.bandsintown.com/artists/' + { userInput } + '/events',
-            jsonp: 'callback',
-            dataType: 'jsonp',
-            data: {
-                app_id: 'Capstone',
-                name: '' + loop[i].Name + '',
-                city: cityInput,
-                date: 2017 - 10 - 31
-            },
-            success: function(eventData) {
-                console.log(eventData);
-            }
-        });
+}
+
+
+
+function onSubmit(event) {
+    event.preventDefault();
+    getTdResults();
+}
+
+function showTasteDiveData(data) {
+    var loop = data.Similar.Results;
+    console.log(data.Similar.Results);
+    for (var i = 0; i < loop.length; i++) {
+        var videoUrl = loop[i].yUrl;
+        var youtubeFrame = `<iframe width="300" height="215" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`
+        console.log(loop[i].Name);
+        $('.results').append(`<div class="card">${youtubeFrame}<h4>${loop[i].Name} </h4> </div>`);
 
     }
-    $('form').submit(function(event) {
-        $('.city').submit(function(event) {
-            event.preventDefault();
-            getTdResults();
-            getEventResults();
-        });
-    });
-});
+}
+//var mockData = { "Similar": { "Info": [{ "Name": "Coldplay", "Type": "music", "wTeaser": "Coldplay are a British rock band formed in 1996 by lead vocalist and keyboardist Chris Martin and lead guitarist Jonny Buckland at University College London (UCL). After they formed under the name Pectoralz, Guy Berryman joined the group as bassist and they changed their name to Starfish. Will Champion joined as drummer and backing vocalist, completing the lineup. Creative director Phil Harvey is often referred to as the fifth member by the band. The band renamed themselves \"Coldplay\" in 1998, before recording and releasing three EPs: Safety in 1998 and Brothers & Sisters and The Blue Room in 1999. The Blue Room was their first release on a major label, after signing to Parlophone.Coldplay achieved worldwide fame with the release of the single \"Yellow\" in 2000, followed in the same year by their debut album Parachutes, which was nominated for the Mercury Prize. The band's second album, A Rush of Blood to the Head (2002), was released to critical acclaim and won awards including NME's Album of the Year. Their next release, X&Y, the bestselling album worldwide in 2005, received mostly positive reviews, though some critics felt it was inferior to its predecessor. Their fourth studio album, Viva la Vida or Death and All His Friends (2008), was produced by Brian Eno and released to largely positive reviews, earning several Grammy Award nominations and wins at the 51st Grammy Awards. In October 2011, Coldplay released their fifth studio album, Mylo Xyloto, which topped the charts in over 34 countries and was the UK's best-selling rock album of 2011, but received mixed reviews, In May 2014, they released their sixth album, Ghost Stories, which also received mixed reviews and topped the iTunes Store albums charts in over 100 countries. In December 2015, the band released their seventh album, A Head Full of Dreams, which reached the top two in most major markets, but received generally mixed reviews.", "wUrl": "http://en.wikipedia.org/wiki/Coldplay_(band)", "yUrl": "https://www.youtube-nocookie.com/embed/FM7MFYoylVs", "yID": "FM7MFYoylVs" }], "Results": [{ "Name": "Keane", "Type": "music", "wTeaser": "Keane are an English rock band from Battle, East Sussex, formed in 1995. The band currently comprises Tom Chaplin (lead vocals, electric/acoustic guitar), Tim Rice-Oxley (piano, synthesisers, bass guitar, backing vocals), Richard Hughes (drums, percussion, backing vocals), and Jesse Quin (bass guitar, acoustic/electric guitar, backing vocals). Their original line-up included founder and guitarist Dominic Scott, who left in 2001.Keane achieved mainstream, international success with the release of their debut album, Hopes and Fears, in 2004. Topping the UK charts, the album won the 2005 Brit Award for Best British Album and was the second best-selling British album of 2004. Their second album, Under the Iron Sea, released in 2006, topped the UK album charts and debuted at number four on the US Billboard 200. Their third album, Perfect Symmetry, was released in October 2008.", "wUrl": "http://en.wikipedia.org/wiki/Keane_(band)", "yUrl": "https://www.youtube-nocookie.com/embed/s-DcphlCrSA", "yID": "s-DcphlCrSA" }, { "Name": "Snow Patrol", "Type": "music", "wTeaser": "Snow Patrol are a Northern Irish/Scottish rock band formed in 1993, consisting of Gary Lightbody (vocals, guitar), Nathan Connolly (guitar, backing vocals), Paul Wilson (bass guitar, backing vocals), Jonny Quinn (drums), and Johnny McDaid (piano, guitar, backing vocals). Initially an indie rock band, the group rose to prominence in the early-mid 2000s as part of the post-Britpop movement.The group were founded at the University of Dundee in 1993 by Lightbody, Michael Morrison, and Mark McClelland as Shrug. After briefly using the name Polar Bear and losing Morrison as a member, the band became Snow Patrol in 1997 and added Quinn to its line-up. Their first three records, the EP Starfighter Pilot (1997), and the studio albums Songs for Polarbears (1998) and When It's All Over We Still Have to Clear Up (2001), were commercially unsuccessful and were released by the independent labels Electric Honey and Jeepster. The band signed on to the major record label Polydor Records in 2002.", "wUrl": "http://en.wikipedia.org/wiki/Snow_Patrol", "yUrl": "https://www.youtube-nocookie.com/embed/GemKqzILV4w", "yID": "GemKqzILV4w" }, { "Name": "U2", "Type": "music", "wTeaser": "U2 are an Irish rock band from Dublin formed in 1976. The group consists of Bono (lead vocals and rhythm guitar), the Edge (lead guitar, keyboards, and backing vocals), Adam Clayton (bass guitar), and Larry Mullen Jr. (drums and percussion). Initially rooted in post-punk, U2's sound grew to incorporate influences from many genres of popular music, yet has maintained an anthemic sound built on Bono's expressive vocals and the Edge's effects-based guitar textures. Their lyrics, often embellished with spiritual imagery, focus on personal themes and sociopolitical concerns. Popular for their live performances, the group have staged several ambitious and elaborate tours over their career.The band formed at Mount Temple Comprehensive School in 1976 when the members were teenagers with limited musical proficiency. Within four years, they signed with Island Records and released their debut album, Boy (1980). Subsequent work such as their first UK number-one album, War (1983), and the singles \"Sunday Bloody Sunday\" and \"Pride (In the Name of Love)\" helped establish U2's reputation as a politically and socially conscious group. By the mid-1980s, they had become renowned globally for their live act, highlighted by their performance at Live Aid in 1985. The group's fifth album, The Joshua Tree (1987), made them international superstars and was their greatest critical and commercial success. Topping music charts around the world, it produced their only number-one singles in the US, \"With or Without You\" and \"I Still Haven't Found What I'm Looking For\". Facing a backlash and creative stagnation, U2 reinvented themselves in the 1990s through a new musical direction and public image. Beginning with their acclaimed seventh album, Achtung Baby (1991), and the multimedia intensive Zoo TV Tour, the band integrated influences from alternative rock, electronic dance music, and industrial music into their sound, and embraced a more ironic, flippant image. This experimentation continued through their ninth album, Pop (1997), and the PopMart Tour, which were mixed successes. U2 regained critical and commercial favour with the records All That You Can't Leave Behind (2000) and How to Dismantle an Atomic Bomb (2004), which established a more conventional, mainstream sound for the group. Their U2 360° Tour of 2009–2011 is the highest-attended and highest-grossing concert tour in history. The group's thirteenth album, Songs of Innocence (2014), was released at no cost through the iTunes Store, but received criticism for its automatic placement in users' music libraries.", "wUrl": "http://en.wikipedia.org/wiki/U2_(music)", "yUrl": "https://www.youtube-nocookie.com/embed/XmSdTa9kaiQ", "yID": "XmSdTa9kaiQ" }, { "Name": "The Fray", "Type": "music", "wTeaser": "The Fray is an American rock band from Denver, Colorado. Formed in 2002 by schoolmates Isaac Slade and Joe King, they achieved success with the release of their debut album, How to Save a Life in 2005, which was certified double platinum by the RIAA and platinum in Australia, Canada, New Zealand and the UK. The Fray achieved national success with their first single, \"Over My Head (Cable Car)\", which became a top ten hit in the United States. The release of their second single, \"How to Save a Life\", brought the band worldwide fame. The song charted in the top three of the Billboard Hot 100 and was a top 5 single in Australia, Canada, Ireland, Italy, Spain, Sweden, and the United Kingdom.", "wUrl": "http://en.wikipedia.org/wiki/The_Fray_(band)", "yUrl": "https://www.youtube-nocookie.com/embed/jFg_8u87zT0", "yID": "jFg_8u87zT0" }, { "Name": "Onerepublic", "Type": "music", "wTeaser": "OneRepublic is an American pop rock band formed in Colorado Springs, Colorado in 2002 by lead vocalist Ryan Tedder and guitarist Zach Filkins. It also currently consists of guitarist Drew Brown, bassist and cellist Brent Kutzle, and drummer Eddie Fisher. The band first achieved commercial success on Myspace as an unsigned act. In late 2003, after OneRepublic played shows throughout the Los Angeles area, a number of record labels approached the band with interest, but the band ultimately signed with Velvet Hammer, an imprint of Columbia Records. They made their first album with producer Greg Wells during the summer and fall of 2005 at his studio, Rocket Carousel, in Culver City, California. The album was originally scheduled for release on June 6, 2006, but the group was dropped by Columbia two months before the album ever came out. The lead single of that album, \"Apologize\", was released on April 30, 2006 on Myspace and received some recognition there, becoming number one on the Myspace charts.", "wUrl": "http://en.wikipedia.org/wiki/Jerrod_bettis", "yUrl": "https://www.youtube-nocookie.com/embed/qXiuVQ-GgA4", "yID": "qXiuVQ-GgA4" }] } };
+//showTasteDiveData(mockData);

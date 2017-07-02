@@ -12,6 +12,8 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 
@@ -20,13 +22,23 @@
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <form>
-        <input class="input" type="text"> <button class="submit">Submit</button> <br>
-        <label>What city are you in? <input class="city" type="text"> </input> <button class="submit_city">Submit</button> </label>
-    </form>
-    <section class="container"></section>
+    <div class="container-fluid">
+        <div class="col-sm-3">
+            <form>
+                <input class="input" type="text"> <button class="submit">Submit</button> <br>
+            </form>
 
-    <script src="index.js" src="index2.js">
+        </div>
+        <div class="col-sm-9">
+            <div class="results">
+                <div class="card">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js">
     </script>
 </body>
 

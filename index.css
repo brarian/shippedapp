@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
+col-sm-9 {
+    display: inline-block;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 15px;
+}
