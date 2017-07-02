@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('.results').empty();
+
     $('form').submit(onSubmit);
 
 });
@@ -6,7 +8,8 @@ $(document).ready(function() {
 function getTdResults() {
     console.log('function run');
     var userInput = $('.input').val();
-    $('.col-sm-3').append('<h4> Search for artists similar to:   ' + userInput + '</h4>');
+    $('.results').empty();
+    $('.results').append('<h4> Search for artists similar to:   ' + userInput + '</h4>');
 
     $.ajax({
         type: 'GET',
@@ -37,7 +40,7 @@ function showTasteDiveData(data) {
     console.log(data.Similar.Results);
     for (var i = 0; i < loop.length; i++) {
         var videoUrl = loop[i].yUrl;
-        var youtubeFrame = `<iframe width="300" height="215" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`
+        var youtubeFrame = `<iframe width="390" height="235" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`
         console.log(loop[i].Name);
         $('.results').append(`<div class="card">${youtubeFrame}<h4>${loop[i].Name} </h4> </div>`);
 
