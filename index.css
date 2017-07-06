@@ -1,19 +1,43 @@
-* {
-    box-sizing: border-box;
+.nav_bar {
+    height: 65px;
+    background-color: lightblue;
+}
+
+.nav_bar .logo {
+    margin-left: 80%;
+}
+
+.etsy_images {
+    margin-left: 35%;
+    margin-top: -50px;
 }
 
 .results {
-    display: inline-block;
+    display: inline;
     margin-left: 10px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .card {
-    float: left;
+    display: inline-block;
+    margin-right: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    margin-left: 15px;
+    max-width: 450px;
     text-align: center;
-    margin-bottom: 15px;
+    font-size: 25px;
 }
+
+p {
+    width: 400px;
+    height: 150px;
+    padding-left: 10px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    font-size: 14px;
+}
+
+
+/*.etsy_images {
+    display: inline;
+}*/

@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    max-width: 1000px;
+    margin-left: 20px;
+    padding-left: 30px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.row1 {
+    max-width: 1000px;
+    margin-right: 25px;
+}
+
+.row2 {
+    max-width: 1000px;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row::before,
+.row::after {
+    display: table;
+    content: '';
+}
+
+.row::after {
+    clear: both;
+}
+
+.col-3 {
+    float: left;
+    padding-left: 1.04166666%;
+    padding-right: 1.04166666%;
+}

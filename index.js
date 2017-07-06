@@ -38,7 +38,7 @@ function showTasteDiveData(data) {
     console.log(data.Similar.Results);
     for (var i = 0; i < loop.length; i++) {
         var videoUrl = loop[i].yUrl;
-        var youtubeFrame = (`<iframe width="390" height="235" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
+        var youtubeFrame = (`<iframe width="400" height="315" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
         console.log(loop[i].Name);
         var teaser = (loop[i].wTeaser);
 
@@ -52,10 +52,9 @@ function showEtsyResults(data) {
     console.log(data.results);
     $.each(data.results, function(key, value) {
         console.log(value.title);
-        $('.etsy-images').append(`${ value.title } <br>`);
-        $("<img/>").attr("src", value.Images[0].url_170x135).appendTo('.etsy-images').wrap("<a href='" + value.url + "'></a>");
-        //$("<img/>").attr("src", value.Images[0].url_75x75).appendTo("#etsy-images").wrap(
-        //"<a href='" + value.url + "'></a>");
+        //$('.etsy_images').append(`${ value.title } <br>`);s
+        //$("<img/>").attr("src", value.Images[0].url_170x135).appendTo(`.etsy_images`).wrap("<a href='" + value.url + "'></a>");
+        $("<img/>").attr("src", value.Images[0].url_170x135).appendTo(".etsy_images").wrap("<a href='" + value.url + "'></a>");
     });
 
 }

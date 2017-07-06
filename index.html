@@ -13,33 +13,48 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="float-grid.css" />
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <section class="main"></section>
+    <div class="main"></div>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <div class="container-fluid">
-        <div class="col-sm-3">
+    <div class="nav_bar" role="navigation bar">
+        <img src="newlogo.png" alt="Shipped Logo" class="logo" width="220px" height="70px" /> </div>
+    <div class="row ">
+        <div class="col-3 ">
             <form>
-                <input class="input" type="text"> <button class="submit">Submit</button> <br>
+                <label for="search " class="search-label ">Search</label> <br>
+                <input class="input " type="text "> <button class="submit ">Submit</button> <br>
             </form>
-
         </div>
-        <div class="col-sm-9">
-            <div class="results">
-                <div class="card">
-                </div>
+    </div>
+
+
+
+    <div class="row1 ">
+        <div class="etsy_images ">
+            <ul></ul>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="row2 ">
+        <div class="results ">
+            <div class="card ">
             </div>
         </div>
     </div>
-    <div class="etsy-images"></div>
-    <script src="apiMock.js">
+
+
+    <script src="apiMock.js ">
     </script>
-    <script src="index.js">
+    <script src="index.js ">
     </script>
 
 </body>
