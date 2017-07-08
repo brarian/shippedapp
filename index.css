@@ -7,25 +7,34 @@
     margin-left: 80%;
 }
 
-.etsy_images {
-    margin-left: 35%;
-    margin-top: -50px;
-}
-
-.results {
-    display: inline;
-    margin-left: 10px;
+.form {
     margin-left: auto;
     margin-right: auto;
 }
 
+.results {
+    display: inline-table;
+}
+
 .card {
-    display: inline-block;
-    margin-right: 40px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 450px;
-    text-align: center;
     font-size: 25px;
+    display: inline-block;
+    margin: 15px;
+    text-align: center;
+    margin-left: 12%;
+}
+
+.card2 {
+    height: 200px;
+    width: 350px;
+    font-size: 10px;
+    line-height: 20px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    display: inline-table;
 }
 
 p {
@@ -37,7 +46,21 @@ p {
     font-size: 14px;
 }
 
+img {
+    margin-top: 15px;
+    margin-left: 5px;
+}
 
-/*.etsy_images {
-    display: inline;
-}*/
+.etsy_images {
+    display: inline-block;
+}
+
+.search_container {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.etsy_images {
+    text-align: center;
+}
