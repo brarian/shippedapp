@@ -7,9 +7,8 @@ $(document).ready(function() {
 function getTdResults() {
     console.log('function run');
     var userInput = $('.input').val();
-    $('.col-sm-2').append('<h4> Search for similar to:   ' + userInput + '</h4>');
 
-    $.ajax({
+    var tasteTerms = $.ajax({
         type: 'GET',
         url: 'https://tastedive.com/api/similar',
         jsonp: 'callback',
@@ -21,9 +20,9 @@ function getTdResults() {
             'type': "shows, movies",
             'info': 1
         },
-        success: showTasteDiveData
-    })
 
+    })
+    return Promise.resolve(tasteTerms);
 };
 
 
@@ -46,6 +45,31 @@ function showTasteDiveData(data) {
 
     }
 }
+
+function getEtsyResults() {
+    console.log('function run');
+    var api_key = "oq7bg648maai6ptutm16v8lk";
+    //var shared secrect ="j9z07m17dg"; 
+    var terms = $('.input').val();
+    var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
+        terms + "&limit=12&includes=Images:1&api_key=" + api_key;
+
+
+    var etsyTerms = $.ajax({
+        url: etsyURL,
+        dataType: 'jsonp',
+
+    });
+
+    return Promise.resolve(etsyTerms);
+
+};
+
+var promise = Promise.resolve(3);
+Promise.all([getEtsyResults, getTdResults]).then(values => {
+    console.log(values);
+});
+
 showTasteDiveData(mockTasteDiveData);
 
 function showEtsyResults(data) {
@@ -56,19 +80,6 @@ function showEtsyResults(data) {
         var link = ("<a href=" + value.url + "></a>");
         var image = "<img src=" + value.Images[0].url_170x135 + ">";
         $('.etsy_images').append("<div class='card2' > <a href=" + value.url + ">" + image + "</a>" + value.title + "</div>");
-
-        //$("<img/>").attr(.attr("src", value.Images[0].url_170x135).appendTo(`.etsy_images `).wrap("<a href='" + value.url + "'></a>");
-        //$('.img').attr(value.Images[0].url_170x135).appendTo(".etsy_images").wrap("<a href='" + value.url + "'> </a>");
-        //$('.etsy_images').append(` < span class = "image_tags" > $ { title } < /span>`);
-        /*$('.img').hover(
-            function() {
-                console.log("hover works", value.title);
-                $(this).append($(`<span>${value.title} </span>`));
-            },
-            function() {
-                $(this).find("span:last").remove();
-            }
-        );*/
 
     });
 
