@@ -65,10 +65,13 @@ function getEtsyResults() {
 
 };
 
-var promise = Promise.resolve(3);
-Promise.all([getEtsyResults, getTdResults]).then(values => {
+//var promise = Promise.resolve(2);
+Promise.all([getEtsyResults(), getTdResults()]).then(values => {
     console.log(values);
+}, function error() {
+    console.log("error");
 });
+
 
 showTasteDiveData(mockTasteDiveData);
 
