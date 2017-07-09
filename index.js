@@ -4,9 +4,8 @@ $(document).ready(function() {
 
 });
 
-function getTdResults() {
-    console.log('function run');
-    var userInput = $('.input').val();
+function getTdResults(userInput) {
+
 
     var tasteTerms = $.ajax({
         type: 'GET',
@@ -28,8 +27,15 @@ function getTdResults() {
 
 function onSubmit(event) {
     $('.results').empty();
+    $('.etsy_images').empty();
     event.preventDefault();
-    getTdResults();
+    var userInput = $('.input').val();
+    var promiseRequests = [getTdResults(userInput), getEtsyResults(userInput)];
+    Promise.all(promiseRequests).then(values => {
+        showEtsyResults(values[1]);
+        showTasteDiveData(values[0]);
+    });
+
 }
 
 function showTasteDiveData(data) {
@@ -46,11 +52,9 @@ function showTasteDiveData(data) {
     }
 }
 
-function getEtsyResults() {
-    console.log('function run');
+function getEtsyResults(terms) {
     var api_key = "oq7bg648maai6ptutm16v8lk";
     //var shared secrect ="j9z07m17dg"; 
-    var terms = $('.input').val();
     var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
         terms + "&limit=12&includes=Images:1&api_key=" + api_key;
 
@@ -65,16 +69,6 @@ function getEtsyResults() {
 
 };
 
-//var promise = Promise.resolve(2);
-Promise.all([getEtsyResults(), getTdResults()]).then(values => {
-    console.log(values);
-}, function error() {
-    console.log("error");
-});
-
-
-showTasteDiveData(mockTasteDiveData);
-
 function showEtsyResults(data) {
     console.log(data.results);
     $.each(data.results, function(key, value) {
@@ -87,5 +81,3 @@ function showEtsyResults(data) {
     });
 
 }
-
-showEtsyResults(mockEtsyResults);
