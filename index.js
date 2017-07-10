@@ -55,7 +55,7 @@ function showTasteDiveData(data) {
 function getEtsyResults(terms) {
     var api_key = "oq7bg648maai6ptutm16v8lk";
     //var shared secrect ="j9z07m17dg"; 
-    var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=" +
+    var etsyURL = "https://openapi.etsy.com/v2/listings/active.js?keywords=tv%20" +
         terms + "&limit=12&includes=Images:1&api_key=" + api_key;
 
 
