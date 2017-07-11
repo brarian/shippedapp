@@ -15,7 +15,7 @@ function getTdResults(userInput) {
         data: {
             'q': userInput,
             'k': '274917-Stuffyou-HUM4RB26',
-            'limit': 4,
+            'limit': 6,
             'type': "shows, movies",
             'info': 1
         },
