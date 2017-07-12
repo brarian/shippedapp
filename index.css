@@ -50,7 +50,7 @@ body {
     margin-right: 15px;
     display: inline-table;
     line-height: 14px;
-    padding-top: 60px;
+    padding-top: 45px;
     font-size: 14px;
     text-align: left;
 }
@@ -71,7 +71,7 @@ p {
 }
 
 .etsy_images img {
-    margin-top: -25px;
+    margin-top: -5px;
     margin-left: 5px;
 }
 
@@ -84,7 +84,7 @@ p {
 .search_container {
     text-align: center;
     margin-bottom: 20px;
-    margin-top: 100px;
+    margin-top: 85px;
 }
 
 .etsy_images {
@@ -111,7 +111,7 @@ p {
     left: 0;
     width: 100%;
     background-color: lightgray;
-    height: 50px;
+    height: 40px;
     /* Height of the footer */
     text-align: center;
 }
@@ -150,4 +150,12 @@ a {
     width: 350px;
     font-size: 20pt;
     margin-left: 55px;
+}
+
+.poster {
+    max-width: 100%;
+}
+
+iframe {
+    max-width: 100%;
 }

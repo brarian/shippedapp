@@ -28,8 +28,6 @@ function showEtsyResults(data) {
         console.log(value.title);
         $('.etsy-images').append(`${ value.title } <br>`);
         $("<img/>").attr("src", value.Images[0].url_170x135).appendTo('.etsy-images').wrap("<a href='" + value.url + "'></a>");
-        //$("<img/>").attr("src", value.Images[0].url_75x75).appendTo("#etsy-images").wrap(
-        //"<a href='" + value.url + "'></a>");
     });
 
 }
@@ -42,8 +40,6 @@ function showEtsyResults(data) {
         console.log(value.title);
         $('.etsy-images').append(`${ value.title } <br>`);
         $("<img/>").attr("src", value.Images[0].url_170x135).appendTo('.etsy-images').wrap("<a href='" + value.url + "'></a>");
-        //$("<img/>").attr("src", value.Images[0].url_75x75).appendTo("#etsy-images").wrap(
-        //"<a href='" + value.url + "'></a>");
     });
 
 }
