@@ -1,6 +1,7 @@
 $(document).ready(function() {
-
+    $('.row2').hide();
     $('form').submit(onSubmit);
+
 
 });
 
@@ -28,6 +29,8 @@ function getTdResults(userInput) {
 function onSubmit(event) {
     $('.results').empty();
     $('.etsy_images').empty();
+    $('.tagline').remove();
+    $('.row2').fadeIn().delay(15000);
     event.preventDefault();
     var userInput = $('.input').val();
     var promiseRequests = [getTdResults(userInput), getEtsyResults(userInput)];
@@ -38,16 +41,17 @@ function onSubmit(event) {
 
 }
 
+
 function showTasteDiveData(data) {
     var loop = data.Similar.Results;
     console.log(data.Similar.Results);
     for (var i = 0; i < loop.length; i++) {
         var videoUrl = loop[i].yUrl;
-        var youtubeFrame = (`<iframe width="400" height="315" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
+        var youtubeFrame = (`<iframe width="400" height="350" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
         console.log(loop[i].Name);
         var teaser = (loop[i].wTeaser);
 
-        $('.results').append(`<div class="card">${youtubeFrame}<h4>${loop[i].Name} </h4> <p>${teaser} </p></div>`);
+        $('.results').append(`<div class="card">${youtubeFrame}<h4>${loop[i].Name}</div>`);
 
     }
 }
@@ -69,6 +73,8 @@ function getEtsyResults(terms) {
 
 };
 
+
+
 function showEtsyResults(data) {
     console.log(data.results);
     $.each(data.results, function(key, value) {
@@ -76,7 +82,7 @@ function showEtsyResults(data) {
         $('.card2').attr("src", value.Images[0].url_170x135);
         var link = ("<a href=" + value.url + "></a>");
         var image = "<img src=" + value.Images[0].url_170x135 + ">";
-        $('.etsy_images').append("<div class='card2' > <a href=" + value.url + ">" + image + "</a>" + value.title + "</div>");
+        $('.etsy_images').append("<div class='card2'> <a href=" + value.url + ">" + image + "</a>" + value.title + "</div>");
 
     });
 
