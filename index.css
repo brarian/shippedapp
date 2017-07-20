@@ -31,6 +31,8 @@ body {
 .results {
     display: inline-table;
     margin-bottom: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
@@ -39,8 +41,12 @@ body {
     display: inline-block;
     margin: 15px;
     text-align: center;
-    margin-left: 12%;
+    margin-right: 40px;
     background-color: white;
+}
+
+.row2 {
+    text-align: center;
 }
 
 .card2 {
@@ -49,12 +55,13 @@ body {
     font-size: 10px;
     line-height: 20px;
     border-radius: 2px;
-    background-color: darkgray;
+    background-color: lightgrey;
     margin-bottom: 15px;
-    margin-right: 15px;
+    margin-right: 10px;
     display: inline-table;
     line-height: 14px;
     padding-top: 34px;
+    padding-right: 5px;
     font-size: 14px;
     text-align: left;
 }
@@ -63,6 +70,7 @@ body {
     float: left;
     margin: 10px;
     margin-top: 15px;
+    margin-left: 7px;
 }
 
 p {
@@ -101,6 +109,7 @@ p {
     bottom: 0;
     right: 0;
     left: 0;
+    font-size: 17px;
     width: 100%;
     background-color: lightgray;
     height: 40px;
@@ -120,15 +129,15 @@ hr.style2 {
 }
 
 a {
-    text-decoration: none;
     color: black;
+    margin: -15px;
+    text-decoration: none;
 }
 
 .submit {
     background-color: lightblue;
     border: none;
     color: white;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;

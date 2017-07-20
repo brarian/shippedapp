@@ -48,7 +48,7 @@ function showTasteDiveData(data) {
         //loops through the Taste Dive data and returns video and title 
     for (var i = 0; i < loop.length; i++) {
         var videoUrl = loop[i].yUrl;
-        var youtubeFrame = (`<iframe width="400" height="350" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
+        var youtubeFrame = (`<iframe width="475" height="325" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
         //adds video and title onto card
         $('.results').append(`<div class="card">${youtubeFrame}<h4>${loop[i].Name}</div>`)
     }
