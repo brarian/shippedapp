@@ -25,23 +25,27 @@ function getTdResults(userInput) {
 };
 
 function onSubmit(event) {
+    $('.loading_container').show();
     $('.results').empty();
     $('.etsy_images').empty();
     $('.tagline').remove();
-    $('.row2').fadeIn().delay(25000); //supposed to delay visibility of 'Watch Next' does not work 
     event.preventDefault();
     //search term for both API calls 
     var userInput = $('.input').val();
     //returns both promises at the same time 
     var promiseRequests = [getTdResults(userInput), getEtsyResults(userInput)]
     Promise.all(promiseRequests).then(values => {
+        $('.loading_container').hide();
         showEtsyResults(values[1])
         showTasteDiveData(values[0])
+        $('.row2').fadeIn().delay(25000); //supposed to delay visibility of 'Watch Next' does not work 
+
     })
 }
 
 function showTasteDiveData(data) {
     var loop = data.Similar.Results
+        //loops through the Taste Dive data and returns video and title 
     for (var i = 0; i < loop.length; i++) {
         var videoUrl = loop[i].yUrl;
         var youtubeFrame = (`<iframe width="400" height="350" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
@@ -64,6 +68,7 @@ function getEtsyResults(terms) {
 };
 
 function showEtsyResults(data) {
+    //$.each -> iterates though the Etsy data
     $.each(data.results, function(key, value) {
         console.log(value.title);
         //appends title and etsy product image to the card 

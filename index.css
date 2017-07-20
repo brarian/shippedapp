@@ -24,6 +24,10 @@ body {
     margin-right: auto;
 }
 
+.loading_container {
+    display: none;
+}
+
 .results {
     display: inline-table;
     margin-bottom: 25px;
