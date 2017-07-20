@@ -7,11 +7,13 @@ revised capstone project
 This app finds trinkets related to the search term (a TV show) and then returns related tv shows. 
 
 ## APIs used 
--https://www.etsy.com/developers/documentation/getting_started/api_basics
-- https://tastedive.com/read/api
+- [Etsy API](https://www.etsy.com/developers/documentation/getting_started/api_basics)
+- [TasteDive](https://tastedive.com/read/api)
 
 ## User Stories 
+
 I want to watch shows which are similar to one I like. 
+
 I want to purchase a product related to a show I like. 
 I want a tangible representation of my favorite character.
 
