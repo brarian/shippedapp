@@ -74,6 +74,6 @@ function showEtsyResults(data) {
         //appends title and etsy product image to the card 
         $('.card2').attr('src', value.Images[0].url_170x135);
         var image = '<img src=' + value.Images[0].url_170x135 + '>';
-        $('.etsy_images').append("<div class='card2'> <a href=" + value.url + '>' + image + '</a>' + value.title + '</div>');
+        $('.etsy_images').append("<div class='card2'> <a href=" + value.url + '>' + image + '</a><div class=text>' + value.title + '</div></div>');
     })
 }

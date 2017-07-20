@@ -103,6 +103,11 @@ p {
     text-align: center;
 }
 
+.text {
+    margin-top: -15px;
+    padding-right: 10px;
+}
+
 .footer {
     margin-top: 15px;
     position: fixed;
@@ -112,7 +117,7 @@ p {
     font-size: 17px;
     width: 100%;
     background-color: lightgray;
-    height: 40px;
+    height: 35px;
     /* Height of the footer */
     text-align: center;
 }
