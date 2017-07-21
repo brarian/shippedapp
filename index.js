@@ -50,7 +50,7 @@ function showTasteDiveData(data) {
         var videoUrl = loop[i].yUrl;
         var youtubeFrame = (`<iframe width="475" height="325" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
         //adds video and title onto card
-        $('.results').append(`<div class="card">${youtubeFrame}<h4>${loop[i].Name}</div>`)
+        $('.results').append(`<div class="card">${youtubeFrame}<div class="ybtext">${loop[i].Name}</div></div>`)
     }
 }
 
