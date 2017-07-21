@@ -146,9 +146,14 @@ a {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    font-size: 22px;
+    padding: 7px;
+    padding-top: 10px;
+    padding-bottom: 6px;
+    line-height: 25px;
+    ;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .input {
@@ -164,4 +169,9 @@ a {
 
 iframe {
     max-width: 100%;
+}
+
+.loading_container {
+    margin-top: 15%;
+    text-align: center;
 }
