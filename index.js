@@ -1,6 +1,5 @@
 /* global $ */
 $(document).ready(function() {
-    //Hides 'Watch Next' title
     $('.row2').hide();
     $('form').submit(onSubmit);
 })
@@ -33,7 +32,7 @@ function onSubmit(event) {
     //search term for both API calls 
     var userInput = $('.input').val();
     //returns both promises at the same time 
-    var promiseRequests = [getTdResults(userInput), getEtsyResults(userInput)]
+    var promiseRequests = [getTdResults(userInput), getEtsyResults(userInput)];
     Promise.all(promiseRequests).then(values => {
         $('.loading_container').hide();
         showEtsyResults(values[1])
