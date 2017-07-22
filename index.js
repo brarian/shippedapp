@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 //function which calls TasteDive data 
 function getTdResults(userInput) {
-    var tasteTerms = $.ajax({
+    return $.ajax({
         type: 'GET',
         url: 'https://tastedive.com/api/similar',
         jsonp: 'callback',
@@ -20,24 +20,28 @@ function getTdResults(userInput) {
         }
 
     })
-    return Promise.resolve(tasteTerms) //first promise 
 };
+console.log(getTdResults("veep"));
 
 function onSubmit(event) {
+    console.log(event);
+    var userInput = $('.input').val();
+
+    //search term for both API calls 
+
+    console.log(userInput);
+    console.log("hello");
+    //returns both promises at the same time 
     $('.loading_container').show();
-    $('.results').empty();
-    $('.etsy_images').empty();
+    $('.row2').show();
+    $('.etsy_images').show();
     $('.tagline').remove();
     event.preventDefault();
-    //search term for both API calls 
-    var userInput = $('.input').val();
-    //returns both promises at the same time 
-    var promiseRequests = [getTdResults(userInput), getEtsyResults(userInput)];
-    Promise.all(promiseRequests).then(values => {
+    $.when(getTdResults(userInput), getEtsyResults(userInput)).done((tdResult, etsyResult) => {
         $('.loading_container').hide();
-        showEtsyResults(values[1])
-        showTasteDiveData(values[0])
-        $('.row2').fadeIn().delay(25000); //supposed to delay visibility of 'Watch Next' does not work 
+        showEtsyResults(etsyResult[0]);
+        showTasteDiveData(tdResult[0]);
+        $('.row2').fadeIn().delay(25000);
 
     })
 }
@@ -58,13 +62,13 @@ function getEtsyResults(terms) {
     var etsyURL = 'https://openapi.etsy.com/v2/listings/active.js?keywords=tv%20' +
         terms + '&limit=12&includes=Images:1&api_key=' + apiKey;
 
-    var etsyTerms = $.ajax({
+    return $.ajax({
         url: etsyURL,
         dataType: 'jsonp'
     })
 
-    return Promise.resolve(etsyTerms) //second promise 
 };
+
 
 function showEtsyResults(data) {
     //$.each -> iterates though the Etsy data
