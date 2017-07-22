@@ -1,6 +1,7 @@
 /* global $ */
 $(document).ready(function() {
     $('.row2').hide();
+    $('row1').empty();
     $('form').submit(onSubmit);
 })
 
