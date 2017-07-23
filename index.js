@@ -1,12 +1,24 @@
 /* global $ */
+function handleThumbnailClicks(id) {
+    $(id).on('click', function(event) {
+        event.preventDefault();
+        console.log(event.currentTarget.id);
+        $('.input').val(event.currentTarget.id);
+    });
+}
+$(handleThumbnailClicks(".thumbnail"));
+
 $(document).ready(function() {
     $('.row2').hide();
-    $('row1').empty();
     $('form').submit(onSubmit);
+
+
+
 })
 
 //function which calls TasteDive data 
 function getTdResults(userInput) {
+    $('.results').html("");
     return $.ajax({
         type: 'GET',
         url: 'https://tastedive.com/api/similar',
@@ -22,28 +34,25 @@ function getTdResults(userInput) {
 
     })
 };
-console.log(getTdResults("veep"));
+//console.log(getTdResults("veep"));
 
 function onSubmit(event) {
-    console.log(event);
+    //console.log(event);
     var userInput = $('.input').val();
-
     //search term for both API calls 
 
-    console.log(userInput);
-    console.log("hello");
+    //console.log(userInput);
+    //console.log("hello");
     //returns both promises at the same time 
     $('.loading_container').show();
-    $('.row2').show();
-    $('.etsy_images').show();
     $('.tagline').remove();
     event.preventDefault();
+
     $.when(getTdResults(userInput), getEtsyResults(userInput)).done((tdResult, etsyResult) => {
         $('.loading_container').hide();
         showEtsyResults(etsyResult[0]);
         showTasteDiveData(tdResult[0]);
         $('.row2').fadeIn().delay(25000);
-
     })
 }
 
@@ -54,11 +63,13 @@ function showTasteDiveData(data) {
         var videoUrl = loop[i].yUrl;
         var youtubeFrame = (`<iframe width="475" height="350" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`);
         //adds video and title onto card
+
         $('.results').append(`<div class="card">${youtubeFrame}<div class="ybtext">${loop[i].Name}</div></div>`)
     }
 }
 
 function getEtsyResults(terms) {
+    $('.etsy_images').html("");
     var apiKey = 'oq7bg648maai6ptutm16v8lk';
     var etsyURL = 'https://openapi.etsy.com/v2/listings/active.js?keywords=tv%20' +
         terms + '&limit=12&includes=Images:1&api_key=' + apiKey;
@@ -74,7 +85,7 @@ function getEtsyResults(terms) {
 function showEtsyResults(data) {
     //$.each -> iterates though the Etsy data
     $.each(data.results, function(key, value) {
-        console.log(value.title);
+        //console.log(value.title);
         //appends title and etsy product image to the card 
         $('.card2').attr('src', value.Images[0].url_170x135);
         var image = '<img src=' + value.Images[0].url_170x135 + '>';
