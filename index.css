@@ -20,7 +20,7 @@ body {
     margin-bottom: 50px;
 }
 
-.form {
+.mainInput {
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
@@ -206,4 +206,13 @@ li {
     float: left;
     margin-left: auto;
     margin-right: auto;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+}
+
+.contactme {
+    margin-top: 50%;
 }

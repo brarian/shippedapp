@@ -6,7 +6,7 @@ function handleThumbnailClicks(id) {
         $('.input').val(event.currentTarget.id);
     });
 }
-$(handleThumbnailClicks(".thumbnail"));
+(handleThumbnailClicks('.thumbnail'));
 
 $(document).ready(function() {
     $('.row2').hide();
