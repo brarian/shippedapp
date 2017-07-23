@@ -11,9 +11,6 @@ $(handleThumbnailClicks(".thumbnail"));
 $(document).ready(function() {
     $('.row2').hide();
     $('form').submit(onSubmit);
-
-
-
 })
 
 //function which calls TasteDive data 
@@ -45,6 +42,7 @@ function onSubmit(event) {
     //console.log("hello");
     //returns both promises at the same time 
     $('.loading_container').show();
+    $('.row2').hide();
     $('.tagline').remove();
     event.preventDefault();
 
@@ -52,7 +50,8 @@ function onSubmit(event) {
         $('.loading_container').hide();
         showEtsyResults(etsyResult[0]);
         showTasteDiveData(tdResult[0]);
-        $('.row2').fadeIn().delay(25000);
+        $('.row2').show();
+
     })
 }
 
