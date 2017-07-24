@@ -216,3 +216,16 @@ li a {
 .contactme {
     margin-top: 50%;
 }
+
+@media only screen and (max-width: 480px) {
+    table {
+        width: 75%;
+    }
+    .search_container {
+        float: left;
+    }
+    textarea {
+        width: 90px;
+        margin-left: 0px;
+    }
+}
