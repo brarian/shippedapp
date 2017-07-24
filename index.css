@@ -166,7 +166,8 @@ hr.style2 {
     height: 40px;
     width: 350px;
     font-size: 20pt;
-    margin-left: 55px;
+    margin-left: 2px;
+    max-width: 90%;
 }
 
 .poster {
@@ -217,15 +218,11 @@ li a {
     margin-top: 50%;
 }
 
-@media only screen and (max-width: 480px) {
-    table {
-        width: 75%;
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    .mainInput {
+        text-align: center;
     }
-    .search_container {
-        float: left;
-    }
-    textarea {
-        width: 90px;
-        margin-left: 0px;
+    .input {
+        margin-left: -10px;
     }
 }
